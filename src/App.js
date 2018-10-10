@@ -4,7 +4,6 @@ import './App.css';
 
 import Courses from './containers/Courses/Courses';
 import Users from './containers/Users/Users';
-import Course from './containers/Course/Course';
 
 class App extends Component {
     render() {
@@ -39,7 +38,6 @@ class App extends Component {
                         <Switch>
                             <Route path="/users" component={Users} />
                             <Route path="/courses" component={Courses} />
-                            <Route path="/course/:id" component={Course} />
                         </Switch>
                     </main>
                 </div>
