@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, NavLink, Redirect } from 'react-router-dom';
+import './App.css';
 
 import Courses from './containers/Courses/Courses';
 import Users from './containers/Users/Users';
@@ -8,8 +9,8 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                <div>
-                    <div className="App">
+                <div className="App">
+                    <div>
                         <ol style={{ textAlign: 'left' }}>
                             <li>Add Routes to load "Users" and "Courses" on different pages (by entering a URL, without Links)</li>
                             <li>Add a simple navigation with two links => One leading to "Users", one leading to "Courses"</li>
@@ -22,10 +23,25 @@ class App extends Component {
                         </ol>
                     </div>
 
-                    <Switch>
-                        <Route path="/users" component={Users} />
-                        <Route path="/courses" component={Courses} />
-                    </Switch>
+                    <main>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <NavLink to="/users">Users</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/courses">Courses</NavLink>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <Switch>
+                            <Route path="/users" component={Users} />
+                            <Route path="/courses" component={Courses} />
+                            <Redirect from="/all-courses" to="/courses" />
+                            <Route render={() => <h1>404 Not found</h1>} />
+                        </Switch>
+                    </main>
                 </div>
             </BrowserRouter>
         );
